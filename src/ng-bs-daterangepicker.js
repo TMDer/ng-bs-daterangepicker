@@ -6,7 +6,7 @@
 (function (angular) {
 'use strict';
 
-angular.module('ngBootstrap', []).directive('input', function ($compile, $parse) {
+angular.module('ngBootstrap', []).directive('button', function ($compile, $parse) {
 	return {
 		restrict: 'E',
 		require: '?ngModel',
@@ -20,8 +20,6 @@ angular.module('ngBootstrap', []).directive('input', function ($compile, $parse)
 			options.maxDate = $attributes.maxDate && moment($attributes.maxDate);
 			options.dateLimit = $attributes.limit && moment.duration.apply(this, $attributes.limit.split(' ').map(function (elem, index) { return index === 0 && parseInt(elem, 10) || elem; }) );
 			options.ranges = $attributes.ranges && $parse($attributes.ranges)($scope);
-			options.locale = $attributes.locale && $parse($attributes.locale)($scope);
-			options.opens = $attributes.opens && $parse($attributes.opens)($scope);
 
 			function format(date) {
 				return date.format(options.format);
@@ -43,11 +41,13 @@ angular.module('ngBootstrap', []).directive('input', function ($compile, $parse)
 			ngModel.$render = function () {
 				if (!ngModel.$viewValue || !ngModel.$viewValue.startDate) return;
 				$element.val(formatted(ngModel.$viewValue));
+				$element.text(formatted(ngModel.$viewValue));
 			};
 
 			$scope.$watch($attributes.ngModel, function (modelValue) {
 				if (!modelValue || (!modelValue.startDate)) {
 					ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().startOf('day') });
+					$element.text(formatted(ngModel.$viewValue));
 					return;
 				}
 				$element.data('daterangepicker').startDate = modelValue.startDate;
@@ -62,7 +62,7 @@ angular.module('ngBootstrap', []).directive('input', function ($compile, $parse)
 					ngModel.$setViewValue({ startDate: start, endDate: end });
 					ngModel.$render();
 				});
-			});			
+			});
 		}
 	};
 });
