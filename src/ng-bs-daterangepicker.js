@@ -35,21 +35,29 @@ angular.module('ngBootstrap', []).directive('button', function ($compile, $parse
 			});
 
 			ngModel.$parsers.unshift(function (viewValue) {
-				return viewValue;
+				if(viewValue === 'foo') {
+		      var currentValue = ngModel.$modelValue;
+		      ngModel.$setViewValue(currentValue);
+		      ngModel.$render();
+		      return currentValue;
+				}else{
+					return viewValue;
+				}
 			});
 
 			ngModel.$render = function () {
 				if (!ngModel.$viewValue || !ngModel.$viewValue.startDate) return;
 				$element.val(formatted(ngModel.$viewValue));
-				$element.text(formatted(ngModel.$viewValue));
+				// $element.text(formatted(ngModel.$viewValue));
 			};
 
 			$scope.$watch($attributes.ngModel, function (modelValue) {
 				if (!modelValue || (!modelValue.startDate)) {
 					ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().startOf('day') });
-					$element.text(formatted(ngModel.$viewValue));
+					// $element.text(formatted(ngModel.$viewValue));
 					return;
 				}
+
 				$element.data('daterangepicker').startDate = modelValue.startDate;
 				$element.data('daterangepicker').endDate = modelValue.endDate;
 				$element.data('daterangepicker').updateView();
