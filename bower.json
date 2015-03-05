@@ -1,0 +1,20 @@
+{
+  "name": "ng-bs-daterangepicker",
+  "main": "ng-bs-daterangepicker.js",
+  "version": "0.0.4",
+  "homepage": "https://github.com/TMDer/ng-bs-daterangepicker",
+  "authors": [
+    "webber_wu <webber_wu@hiiir.com>"
+  ],
+  "keywords": [
+    "pmd"
+  ],
+  "description": "tmd",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.2.18",
+    "bootstrap": "~3.1.1",
+    "bootstrap-daterangepicker": "*",
+    "ng-bs-daterangepicker": "https://github.com/TMDer/ng-bs-daterangepicker.git#e4e45c78cf6d5b3ca5fcf931a3118d4e943b852d"
+  }
+}
