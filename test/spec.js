@@ -9,12 +9,12 @@ describe('the daterange directive', function () {
 	}));
 
 	it('creates an instance of daterangepicker', function () {
-		var element = $ngCompile('<input type="daterange" ng-model="dummy">')($ngRootScope);
+		var element = $ngCompile('<button type="daterange" ng-model="dummy"></button>')($ngRootScope);
 		expect(element.data('daterangepicker')).toBeDefined();
 	});
 
 	it('creates an instance with default values', function () {
-		var element = $ngCompile('<input type="daterange" ng-model="dummy">')($ngRootScope);
+		var element = $ngCompile('<button type="daterange" ng-model="dummy"></button>')($ngRootScope);
 		$ngRootScope.$apply();
 
 		expect(element.data('daterangepicker').startDate.format('YYYY-MM-DD')).toBe(moment().format('YYYY-MM-DD'));
@@ -37,7 +37,7 @@ describe('the daterange directive', function () {
 			maxDate = '2013-09-25',
 			limitAmount = 1,
 			limitUnit = 'week',
-			element = $ngCompile('<input type="daterange" ng-model="dates" format="'+format+'" separator="'+separator+'" min-date="'+minDate+'" max-date="'+maxDate+'" limit="'+limitAmount+' '+limitUnit+'">')($ngRootScope);
+			element = $ngCompile('<button type="daterange" ng-model="dates" format="'+format+'" separator="'+separator+'" min-date="'+minDate+'" max-date="'+maxDate+'" limit="'+limitAmount+' '+limitUnit+'"></button>')($ngRootScope);
 
 		$ngRootScope.dates = { startDate: moment(startDate), endDate: moment(endDate) };
 		$ngRootScope.$apply();
@@ -55,15 +55,15 @@ describe('the daterange directive', function () {
 		$ngRootScope.ranges = {
 			'Today': [moment().startOf('day'), moment()],
 			// accepts string formatted dates
-			'Yesterday': [moment().subtract('days', 1).format('YYYY-MM-DD'), moment().subtract('days', 1).format('YYYY-MM-DD')]
+			'Yesterday': [moment().subtract( 1, 'days').format('YYYY-MM-DD'), moment().subtract( 1, 'days').format('YYYY-MM-DD')]
 		};
-		var element = $ngCompile('<input type="daterange" ng-model="dummy" ranges="ranges">')($ngRootScope);
+		var element = $ngCompile('<button type="daterange" ng-model="dummy" ranges="ranges"></button>')($ngRootScope);
 		expect(element.data('daterangepicker').ranges.Today).not.toBeUndefined();
 		expect(element.data('daterangepicker').ranges.Today[0].format('YYYY-MM-DD')).toBe(moment().startOf('day').format('YYYY-MM-DD'));
 		expect(element.data('daterangepicker').ranges.Today[1].format('YYYY-MM-DD')).toBe(moment().format('YYYY-MM-DD'));
 		expect(element.data('daterangepicker').ranges.Yesterday).not.toBeUndefined();
-		expect(element.data('daterangepicker').ranges.Yesterday[0].format('YYYY-MM-DD')).toBe(moment().subtract('days', 1).format('YYYY-MM-DD'));
-		expect(element.data('daterangepicker').ranges.Yesterday[1].format('YYYY-MM-DD')).toBe(moment().subtract('days', 1).format('YYYY-MM-DD'));
+		expect(element.data('daterangepicker').ranges.Yesterday[0].format('YYYY-MM-DD')).toBe(moment().subtract( 1, 'days').format('YYYY-MM-DD'));
+		expect(element.data('daterangepicker').ranges.Yesterday[1].format('YYYY-MM-DD')).toBe(moment().subtract( 1, 'days').format('YYYY-MM-DD'));
 	});
 	
 	
