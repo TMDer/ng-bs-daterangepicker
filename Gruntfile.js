@@ -1,8 +1,10 @@
 module.exports = function(grunt) {
+
   'use strict';
 
   // Project configuration.
   grunt.initConfig({
+
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
@@ -18,31 +20,33 @@ module.exports = function(grunt) {
           autoWatch: true,
           singleRun: true,
           files: [
-            'src/components/jquery/dist/jquery.js',
-            'src/components/angular/angular.js',
-            'src/components/angular-mocks/angular-mocks.js',
-            'src/components/bootstrap/dist/js/bootstrap.js',
-            'src/components/moment/min/moment.min.js',
-            'src/components/bootstrap-daterangepicker/daterangepicker.js',
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/angular/angular.js',
+            'bower_components/angular-mocks/angular-mocks.js',
+            'bower_components/bootstrap/dist/js/bootstrap.js',
+            'bower_components/moment/min/moment.min.js',
+            'bower_components/bootstrap-daterangepicker/daterangepicker.js',
             'src/ng-bs-daterangepicker.js',
-            'test/**/*.js']
+            'test/**/*.js'
+          ]
         }
       }
     },
 
     uglify: {
-       options: {
-          preserveComments: 'some',
-          sourceMap: 'dist/ng-bs-daterangepicker.min.js.map',
-          sourceMappingURL: 'ng-bs-daterangepicker.min.js.map',
-          report: 'min'
-       },
-       dist: {
-          files: {
-             'dist/ng-bs-daterangepicker.min.js': ['src/ng-bs-daterangepicker.js']
-          }
-       }
-     }
+      options: {
+        preserveComments: 'some',
+        sourceMap: 'dist/ng-bs-daterangepicker.min.js.map',
+        sourceMappingURL: 'ng-bs-daterangepicker.min.js.map',
+        report: 'min'
+      },
+      dist: {
+        files: {
+          'dist/ng-bs-daterangepicker.min.js': ['src/ng-bs-daterangepicker.js']
+        }
+      }
+    }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -50,4 +54,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['jshint', 'karma']);
+
 };
