@@ -1,21 +1,23 @@
+# Customized version with TMDer
+
 ng-bs-daterangepicker
 ---
 
-Angular directive for Dan Grossman's [bootstrap-daterangepicker](https://github.com/dangrossman/bootstrap-daterangepicker).
+Angular directive for Luis Farzati's [ng-bs-daterangepicker](https://github.com/luisfarzati/ng-bs-daterangepicker).
 
-Demo: http://luisfarzati.github.io/ng-bs-daterangepicker
+Demo: http://tmder.github.io/ng-bs-daterangepicker/
 
 Installation
 ---
 
 Using bower:
 ```
-bower install ng-bs-daterangepicker
+待補
 ```
 
 Using npm:
 ```
-npm install ng-bs-daterangepicker
+待補
 ```
 
 How to use it
@@ -50,10 +52,10 @@ Then, inject `ngBootstrap` in your application module:
 angular.module('myApp', ['ngBootstrap']);
 ```
 
-and then just add an `input` of type `daterange`:
+and then just add an `button` of type `daterange`:
 
 ```html
-<input type="daterange" ng-model="myDateRange" />
+<button type="daterange" ng-model="myDateRange"></button>
 ```
 
 The result object `$scope.myDateRange` has a `startDate` and `endDate` properties, which are instances of `moment()`.
@@ -72,15 +74,16 @@ The result object `$scope.myDateRange` has a `startDate` and `endDate` propertie
 Example with all above features:
 
 ```html
-<input
-	type="daterange"
-	ng-model="dates"
-	min-date="2013-09-10"
-	max-date="2013-09-25"
-	limit="3 days"
-	format="L"
-	separator="/"
-	ranges="{'Special Range':{'startDate': '2013-09-2', 'endDate': '2013-09-5'}}">
+<button
+  type="daterange"
+  ng-model="dates"
+  min-date="2013-09-10"
+  max-date="2013-09-25"
+  limit="3 days"
+  format="L"
+  separator="/"
+  ranges="{'Special Range':{'startDate': '2013-09-2', 'endDate': '2013-09-5'}}">
+</button>
 ```
 
 The `limit` attribute lets you specify a number and unit similarly as you would invoke `moment.duration()`.
