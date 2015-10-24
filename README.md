@@ -12,7 +12,7 @@ Installation
 
 Using bower:
 ```
-待補
+bower install ng-bs-btn-daterangepicker
 ```
 
 Using npm:
