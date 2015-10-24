@@ -1,6 +1,6 @@
 # Customized version with TMDer
 
-ng-bs-daterangepicker
+ng-bs-btn-daterangepicker
 ---
 
 Angular directive for Luis Farzati's [ng-bs-daterangepicker](https://github.com/luisfarzati/ng-bs-daterangepicker).
